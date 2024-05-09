@@ -5,7 +5,7 @@ import pMemoize from 'p-memoize'
 
 import {
   isPreviewImageSupportEnabled,
-  navigationLinks,
+  headerNavigationLinks,
   navigationStyle
 } from './config'
 import { notion } from './notion-api'
@@ -13,7 +13,7 @@ import { getPreviewImageMap } from './preview-images'
 
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
-    const navigationLinkPageIds = (navigationLinks || [])
+    const navigationLinkPageIds = (headerNavigationLinks || [])
       .map((link) => link.pageId)
       .filter(Boolean)
 

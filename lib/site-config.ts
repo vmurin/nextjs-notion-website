@@ -15,8 +15,6 @@ export interface SiteConfig {
   linkedin?: string
   newsletter?: string
   youtube?: string
-  zhihu?: string
-  mastodon?: string;
 
   defaultPageIcon?: string | null
   defaultPageCover?: string | null
@@ -32,13 +30,15 @@ export interface SiteConfig {
   pageUrlAdditions?: types.PageUrlOverridesMap
 
   navigationStyle?: types.NavigationStyle
-  navigationLinks?: Array<NavigationLink>
+  headerNavigationLinks?: Array<NavigationLink>
+  footerNavigationLinks?: Array<NavigationLink>
 }
 
 export interface NavigationLink {
   title: string
   pageId?: string
   url?: string
+  hash?: string
 }
 
 export const siteConfig = (config: SiteConfig): SiteConfig => {

@@ -20,7 +20,6 @@ export default siteConfig({
   //twitter: 'transitive_bs',
   github: 'vmurin',
   linkedin: 'vlad-murin',
-  // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
@@ -49,17 +48,22 @@ export default siteConfig({
   pageUrlOverrides: null,
 
   // whether to use the default notion navigation style or a custom one with links to
-  // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
+  // important pages. To use `headerNavigationLinks`, set `navigationStyle` to `custom`.
   // navigationStyle: 'default'
   navigationStyle: 'custom',
-  navigationLinks: [
+  headerNavigationLinks: [
     {
-      title: 'About',
-      pageId: 'f1199d37579b41cbabfc0b5174f4256a'
+      title: 'Über mich',
+      pageId: '130da9f6e9024380a008830fa0b2746f'
     },
     {
-      title: 'Contact',
-      pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
+      title: 'Projekte',
+      pageId: '629e5bbf1cef4a98b2b0dd6014719f83',
+      hash: '9502fa37c6f848eeb993ea2f556b53df'
+    },
+    {
+      title: 'Kontakt',
+      pageId: 'df1a0637c5344f97b0d1891d79049082'
     }
   ]
 })

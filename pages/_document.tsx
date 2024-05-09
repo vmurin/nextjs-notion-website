@@ -13,8 +13,8 @@ export default class MyDocument extends Document {
             <link
               rel='icon'
               type='image/png'
-              sizes='32x32'
-              href='favicon.png'
+              sizes='64x64'
+              href='favicon64.png'
             />
 
             <link rel='manifest' href='/manifest.json' />

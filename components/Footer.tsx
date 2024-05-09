@@ -8,6 +8,7 @@ import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 
 import * as config from '@/lib/config'
 import styles from './styles.module.css'
+import { NavigationLinks } from './NavigationLinks'
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
@@ -18,7 +19,8 @@ export const FooterImpl: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.copyright}>Copyright {currentYear} {config.author}</div>
 
-      <div className={styles.settings}>
+      <div className={styles.footerNavLinks}>
+        <NavigationLinks navigationLinks={config.footerNavigationLinks} />
       </div>
 
       <div className={styles.social}>

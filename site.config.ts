@@ -1,3 +1,4 @@
+import { rootNotionPageId } from './lib/config';
 import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
@@ -9,12 +10,12 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
+  name: 'Vlad`s Murin personal Website',
   domain: 'murin-online.de',
   author: 'Vlad Murin',
 
   // open graph metadata (optional)
-  description: 'Vlad Murin - Freelancer IT Consultant',
+  description: 'Vlad Murin - Freelance IT Consultant',
 
   // social usernames (optional)
   //twitter: 'transitive_bs',
@@ -53,6 +54,10 @@ export default siteConfig({
   navigationStyle: 'custom',
   headerNavigationLinks: [
     {
+      title: 'Home',
+      pageId: '629e5bbf1cef4a98b2b0dd6014719f83'
+    },
+    {
       title: 'Über mich',
       pageId: '130da9f6e9024380a008830fa0b2746f'
     },
@@ -63,7 +68,18 @@ export default siteConfig({
     },
     {
       title: 'Kontakt',
-      pageId: 'df1a0637c5344f97b0d1891d79049082'
+      pageId: '70fec56d5e864ca6bce52b66c6051e46'
+    }
+  ],
+
+  footerNavigationLinks: [
+    {
+      title: 'Impressum',
+      pageId: '4f3c19c016a24760b05225a7132be196'
+    },
+    {
+      title: 'Datenschutzerklärung',
+      pageId: 'a012744c7b67412fb69b523432f44353',
     }
   ]
 })

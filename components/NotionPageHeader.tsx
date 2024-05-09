@@ -4,12 +4,13 @@ import * as types from 'notion-types'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import cs from 'classnames'
-import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
+import { Breadcrumbs, Header, Search } from 'react-notion-x'
 
 import { isSearchEnabled, headerNavigationLinks, navigationStyle } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
+import { NavigationLinks } from './NavigationLinks'
 
 const ToggleThemeButton = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
@@ -33,10 +34,7 @@ const ToggleThemeButton = () => {
   )
 }
 
-export const NotionPageHeader: React.FC<{
-  block: types.CollectionViewPageBlock | types.PageBlock
-}> = ({ block }) => {
-  const { components, mapPageUrl } = useNotionContext()
+export const NotionPageHeader: React.FC<{ block: types.CollectionViewPageBlock | types.PageBlock }> = ({ block }) => {
 
   if (navigationStyle === 'default') {
     return <Header block={block} />
@@ -46,52 +44,10 @@ export const NotionPageHeader: React.FC<{
     <header className='notion-header'>
       <div className='notion-nav-header'>
         <Breadcrumbs block={block} rootOnly={true} />
-
-        <div className='notion-nav-header-rhs breadcrumbs'>
-          {headerNavigationLinks
-            ?.map((link, index) => {
-              if (!link.pageId && !link.url) {
-                return null
-              }
-
-              if (link.pageId && link.hash) {
-                return (
-                  <components.PageLink
-                    href={mapPageUrl(link.pageId) + '#' + link.hash}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
-                  >
-                    {link.title}
-                  </components.PageLink>
-                )
-              } else if (link.pageId) {
-                return (
-                  <components.PageLink
-                    href={mapPageUrl(link.pageId)}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
-                  >
-                    {link.title}
-                  </components.PageLink>
-                )
-              } else {
-                return (
-                  <components.Link
-                    href={link.url}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
-                  >
-                    {link.title}
-                  </components.Link>
-                )
-              }
-            })
-            .filter(Boolean)}
-
-          <ToggleThemeButton />
-
-          {isSearchEnabled && <Search block={block} title={null} />}
-        </div>
+        <NavigationLinks navigationLinks={headerNavigationLinks} classNames='notion-nav-header-rhs breadcrumbs'>
+            <ToggleThemeButton />
+            {isSearchEnabled && <Search block={block} title={null} />}
+        </NavigationLinks>
       </div>
     </header>
   )

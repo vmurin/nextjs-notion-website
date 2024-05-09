@@ -4,15 +4,16 @@ import { cs, useNotionContext } from 'react-notion-x'
 import styles from './styles.module.css'
 
 type Props = {
-  headerNavigationLinks: Array<NavigationLink | null>,
+  children?: React.ReactNode[],
+  navigationLinks: Array<NavigationLink | null>,
   classNames?: string
 }
-export const NavigationLinks: React.FC<Props> = ( {headerNavigationLinks, classNames} ) => {
+export const NavigationLinks: React.FC<Props> = ( {navigationLinks: navigationLinks, classNames, children}) => {
   const { components, mapPageUrl } = useNotionContext()
 
   return (
         <div className={classNames}>
-          {headerNavigationLinks
+          {navigationLinks
             ?.map((link, index) => {
               if (!link.pageId && !link.url) {
                 return null
@@ -51,6 +52,7 @@ export const NavigationLinks: React.FC<Props> = ( {headerNavigationLinks, classN
               }
             })
             .filter(Boolean)}
+            {children}
         </div>
   )
 }

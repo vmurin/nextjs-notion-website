@@ -476,3 +476,21 @@
   color: var(--cta-color-text) !important;
   margin: -2px !important;
 }
+
+a[href^='https://wa.me/'] {
+  color: darkgreen;
+
+  &:after {
+    display: inline-flex;
+    content: '';
+
+    /* Using the background-image and
+       its related properties to add
+       the SVG content */
+    background-image: url('/whatsapp.svg');
+    background-size: 1rem 1rem;
+    height: 1rem;
+    width: 1rem;
+    margin-left: 5px;
+  }
+}

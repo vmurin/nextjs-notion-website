@@ -157,17 +157,11 @@ All pages are designed to be responsive across common device sizes.
 
 Analytics are an optional feature that are easy to enable if you want.
 
-### Fathom Analytics
-
-[Fathom](https://usefathom.com/ref/42TFOZ) provides a lightweight alternative to Google Analytics.
-
-To enable, just add a `NEXT_PUBLIC_FATHOM_ID` environment variable, which will only be used in production.
-
 ### PostHog Analytics
 
 [PostHog](https://posthog.com/) provides a lightweight, **open source** alternative to Google Analytics.
 
-To enable, just add a `NEXT_PUBLIC_POSTHOG_ID` environment variable, which will only be used in production.
+To enable, just add a `NEXT_PUBLIC_POSTHOG_KEY` environment variable, which will only be used in production.
 
 ## Environment Variables
 

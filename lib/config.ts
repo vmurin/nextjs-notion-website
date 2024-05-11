@@ -21,6 +21,9 @@ export const rootNotionPageId: string = parsePageId(
   { uuid: false }
 )
 
+export const cookiePolicyLink: NavigationLink = getSiteConfig('cookiePolicyLink')
+
+
 if (!rootNotionPageId) {
   throw new Error('Config error invalid "rootNotionPageId"')
 }

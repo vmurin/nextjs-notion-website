@@ -21,6 +21,7 @@ const ToggleThemeButton = () => {
   }, [])
 
   const onToggleTheme = React.useCallback(() => {
+    console.log('onToggleTheme')
     toggleDarkMode()
   }, [toggleDarkMode])
 

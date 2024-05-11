@@ -1,9 +1,15 @@
-import { rootNotionPageId } from './lib/config';
 import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
   rootNotionPageId: '629e5bbf1cef4a98b2b0dd6014719f83',
+
+  //privacy policy
+  cookiePolicyLink: {
+    title: 'Cookie-Richtlinie',
+    pageId:'a012744c7b67412fb69b523432f44353',
+    hash:'089ee90eb43b4c0cbdde6975fd265e14'
+  },
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)

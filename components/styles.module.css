@@ -222,3 +222,46 @@
 .hidden {
   visibility: hidden;
 }
+
+.cookieConsent {
+  position: fixed;
+  bottom: 40px;
+  left: 10%;
+  right: 10%;
+  width: 80%;
+  padding: 5px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(192, 224, 223, 0.7);
+  border-radius: 5px;
+  padding: 1em;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+@media only screen and (max-width: 720px) {
+  .cookieConsent {
+    flex-direction: column;
+    gap: 1em;
+    padding-bottom: 1em;
+  }
+}
+.cookieConsentLink {
+  cursor: pointer;
+  text-decoration: underline;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.cookieConsentClose {
+  margin-left: 20px;
+  height: 2em;
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+}

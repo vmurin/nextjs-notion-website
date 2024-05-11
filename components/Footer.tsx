@@ -9,6 +9,7 @@ import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 import * as config from '@/lib/config'
 import styles from './styles.module.css'
 import { NavigationLinks } from './NavigationLinks'
+import CookieConsent from './CookieConsent'
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
@@ -84,6 +85,7 @@ export const FooterImpl: React.FC = () => {
           </a>
         )}
       </div>
+      <CookieConsent />
     </footer>
   )
 }

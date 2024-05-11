@@ -477,17 +477,35 @@
   margin: -2px !important;
 }
 
+// whatsapp
 a[href^='https://wa.me/'] {
-  color: darkgreen;
+  color: #25d366;
 
   &:after {
     display: inline-flex;
     content: '';
 
     /* Using the background-image and
-       its related properties to add
-       the SVG content */
+       its related properties to add the SVG content */
     background-image: url('/whatsapp.svg');
+    background-size: 1rem 1rem;
+    height: 1rem;
+    width: 1rem;
+    margin-left: 5px;
+  }
+}
+
+// telegram
+a[href^='https://t.me/'] {
+  color: #0088cc;
+
+  &:after {
+    display: inline-flex;
+    content: '';
+
+    /* Using the background-image and
+       its related properties to add the SVG content */
+    background-image: url('/telegram-1024.png');
     background-size: 1rem 1rem;
     height: 1rem;
     width: 1rem;

@@ -6,20 +6,29 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer({
   staticPageGenerationTimeout: 300,
   images: {
-    domains: [
-      'www.notion.so',
-      'notion.so',
-      'images.unsplash.com',
-      'pbs.twimg.com',
-      'abs.twimg.com',
-      's3.us-west-2.amazonaws.com',
-      'murin-online.de',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.notion.so',
+        port: '',
+      },
+      // {
+      //   protocol: 'https',
+      //   hostname: '**.s3.us-west-2.amazonaws.com',
+      //   port: '',
+      // },
+      {
+        protocol: 'https',
+        hostname: 'murin-online.de',
+        port: '',
+      }
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   async rewrites() {
+    // reverse proxy for posthog to overcome tracking blocker
     return [
       {
         source: "/ingest/static/:path*",

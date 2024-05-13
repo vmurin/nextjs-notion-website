@@ -12,14 +12,9 @@ module.exports = withBundleAnalyzer({
         hostname: '**.notion.so',
         port: '',
       },
-      // {
-      //   protocol: 'https',
-      //   hostname: '**.s3.us-west-2.amazonaws.com',
-      //   port: '',
-      // },
       {
         protocol: 'https',
-        hostname: 'murin-online.de',
+        hostname: '**.murin-online.de',
         port: '',
       }
     ],

@@ -15,6 +15,7 @@ package-lock.json
 
 # production
 /build
+.serverless
 
 # misc
 .DS_Store

@@ -1,0 +1,63 @@
+.notion-header {
+  background-color: rgb(192 224 223 / 70%);
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+.notion-header .notion-nav-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: auto;
+
+  .burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+
+    .bar {
+        height: 3px;
+        width: 25px;
+        background-color: white;
+        margin: 4px 0;
+        transition: 0.3s;
+    }
+  }
+
+  .navbar-links {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .notion-header .notion-nav-header {
+    .burger-menu {
+      display: flex;
+    }
+  }
+
+  .notion-header .notion-nav-header .navbar-links{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+
+    &.open {
+      display: flex;
+    }
+  }
+}
+
+.dark-mode .notion-header {
+  background: transparent;
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+/* Workaround for Firefox not supporting backdrop-filter yet */
+@-moz-document url-prefix() {
+  .dark-mode .notion-header {
+    background: hsla(203, 8%, 20%, 0.8);
+  }
+}
+
+
+

@@ -36,6 +36,11 @@ const ToggleThemeButton = () => {
 }
 
 export const NotionPageHeader: React.FC<{ block: types.CollectionViewPageBlock | types.PageBlock }> = ({ block }) => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  }
 
   if (navigationStyle === 'default') {
     return <Header block={block} />
@@ -45,10 +50,16 @@ export const NotionPageHeader: React.FC<{ block: types.CollectionViewPageBlock |
     <header className='notion-header'>
       <div className='notion-nav-header'>
         <Breadcrumbs block={block} rootOnly={true} />
-        <NavigationLinks navigationLinks={headerNavigationLinks} classNames='notion-nav-header-rhs breadcrumbs'>
+        <NavigationLinks navigationLinks={headerNavigationLinks}
+            classNames={`navbar-links breadcrumbs ${isMenuOpen ? 'open' : ''}`}>
             <ToggleThemeButton />
             {isSearchEnabled && <Search block={block} title={null} />}
         </NavigationLinks>
+        <div className='burger-menu' onClick={toggleMenu} >
+          <span className="bar"/>
+          <span className="bar"/>
+          <span className="bar"/>
+        </div>
       </div>
     </header>
   )

@@ -13,6 +13,7 @@ import 'styles/global.css'
 // import 'prismjs/themes/prism-okaidia.css'
 // global style overrides for notion
 import 'styles/notion.scss'
+import 'styles/components.scss'
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
 import posthog from 'posthog-js'

@@ -37,4 +37,19 @@ module.exports = withBundleAnalyzer({
   },
   // This is required to support PostHog trailing slash API requests
   skipTrailingSlashRedirect: true,
+  // convert CSS class names from kebab-case to camelCase
+  webpack: (config) => {
+    // camelCase style names from css modules
+    config.module.rules
+        .find(({oneOf}) => !!oneOf).oneOf
+        .filter(({use}) => JSON.stringify(use)?.includes('css-loader'))
+        .reduce((acc, {use}) => acc.concat(use), [])
+        .forEach(({options}) => {
+            if (options.modules) {
+                options.modules.exportLocalsConvention = 'camelCase';
+            }
+        });
+
+    return config;
+  },
 })

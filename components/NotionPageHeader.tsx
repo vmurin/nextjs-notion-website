@@ -55,7 +55,7 @@ export const NotionPageHeader: React.FC<{ block: types.CollectionViewPageBlock |
             <ToggleThemeButton />
             {isSearchEnabled && <Search block={block} title={null} />}
         </NavigationLinks>
-        <div className='burger-menu' onClick={toggleMenu} >
+        <div className={`burger-menu ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu} >
           <span className="bar"/>
           <span className="bar"/>
           <span className="bar"/>

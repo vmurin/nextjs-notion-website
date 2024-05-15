@@ -168,6 +168,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
     []
   )
 
+  console.log('Build ID:', process.env.NEXT_PUBLIC_BUILD_ID);
+
   // lite mode is for oembed
   const isLiteMode = lite === 'true'
 
@@ -211,13 +213,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const title = getBlockTitle(block, recordMap) || site.name
 
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    recordMap
-  })
+  // console.log('notion page', {
+  //   isDev: config.isDev,
+  //   title,
+  //   pageId,
+  //   rootNotionPageId: site.rootNotionPageId,
+  //   recordMap
+  // })
 
   if (!config.isServer) {
     // add important objects to the window global for easy debugging

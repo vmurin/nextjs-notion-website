@@ -47,12 +47,13 @@ export default siteConfig({
   // map of notion page IDs to URL paths (optional)
   // any pages defined here will override their default URL paths
   // example:
+  // pageUrlOverrides: null,
   //
   pageUrlOverrides: {
-    '/about': '130da9f6e9024380a008830fa0b2746f'
+    '/about': '130da9f6e9024380a008830fa0b2746f',
+    '/imprint': '4f3c19c016a24760b05225a7132be196',
+    '/privacy': 'a012744c7b67412fb69b523432f44353',
   },
-
-  // pageUrlOverrides: null,
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `headerNavigationLinks`, set `navigationStyle` to `custom`.

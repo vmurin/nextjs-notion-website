@@ -52,4 +52,7 @@ module.exports = withBundleAnalyzer({
 
     return config;
   },
+  env: {
+    NEXT_PUBLIC_BUILD_ID: `${process.env.AWS_BRANCH}-${process.env.AWS_COMMIT_ID}`,
+  }
 })

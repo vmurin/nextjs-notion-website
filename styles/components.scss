@@ -2,15 +2,13 @@
   background-color: rgb(192 224 223 / 70%);
   backdrop-filter: saturate(180%) blur(10px);
   overflow: visible;
-  .button {
-    width: 100%;
-  }
 }
 
 .notion-header .notion-nav-header {
   max-width: 1100px;
   margin: 0 auto;
   overflow-x: auto;
+  font-size: 1rem;
 
   .burger-menu {
     display: none;
@@ -81,21 +79,34 @@
     display: flex;
     position: fixed;
     flex-direction: column;
-    width: 75%;
+    width: 0%;
     padding: 0;
-    right: -90%;
     transition: right 0s;
+    right: 0;
+    font-size: 1.3rem;
+    gap: 1.5rem;
+
+    .button {
+      visibility: hidden;
+      position: absolute;
+      right: 0;
+    }
 
     &.open {
       display: flex;
+      width: 70%;
       position: fixed;
-      top: 57px;
+      top: 55px;
       border-radius: 5px;
       height: 50vh;
       background-color: rgb(192 224 223 / 100%);
       backdrop-filter: saturate(180%) blur(10px);
-      right: 0;
-      transition: right 0.25s ease-in-out;
+      transition: width 0.25s ease-in-out;
+      .button {
+        width: 100%;
+        visibility: visible;
+        position: static;
+      }
     }
   }
 }

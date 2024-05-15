@@ -16,7 +16,7 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Vlad`s Murin personal Website',
+  name: 'Vlad Murin - Full-Stack Developer',
   domain: 'murin-online.de',
   author: 'Vlad Murin',
 

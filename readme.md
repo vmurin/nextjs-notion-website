@@ -167,7 +167,8 @@ To enable, just add a `NEXT_PUBLIC_POSTHOG_KEY` environment variable, which will
 
 If you're using Redis, analytics, or any other feature which requires environment variables, then you'll need to [add them to your Vercel project](https://vercel.com/docs/concepts/projects/environment-variables).
 
-If you want to test your redis builds with GitHub Actions, then you'll need to edit the [default build action](./.github/workflows/build.yml) to add `REDIS_HOST` and `REDIS_PASSWORD`. Here is an [example from my personal branch](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/transitive-bullshit/.github/workflows/build.yml#L17-L21). You'll also need to add these environment variables to your GitHub repo as [repository secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
+If you are running the website on AWS Amplify - add the variable `NEXT_PUBLIC_ENV = production` specific to your production branch.
+(See Aplify [docs](https://docs.aws.amazon.com/amplify/latest/userguide/environment-variables.html#setting-env-vars))
 
 ## Contributing
 

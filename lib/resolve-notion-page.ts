@@ -7,6 +7,18 @@ import { db } from './db'
 import { getSiteMap } from './get-site-map'
 import { getPage } from './notion'
 
+
+async function getPageWithTry(pageId: string) {
+  try {
+    return await getPage(pageId)
+  } catch (error) {
+    if (error.message && (error.message as string).indexOf('Notion page not found') > -1) {
+      error['statusCode'] = 404
+    }
+    throw error
+  }
+}
+
 export async function resolveNotionPage(domain: string, rawPageId?: string) {
   let pageId: string
   let recordMap: ExtendedRecordMap
@@ -44,7 +56,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
     }
 
     if (pageId) {
-      recordMap = await getPage(pageId)
+      recordMap = await getPageWithTry(pageId)
     } else {
       // handle mapping of user-friendly canonical page paths to Notion page IDs
       // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
@@ -56,7 +68,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
         // cached aggressively
         // recordMap = siteMap.pageMap[pageId]
 
-        recordMap = await getPage(pageId)
+        recordMap = await getPageWithTry(pageId)
 
         if (useUriToPageIdCache) {
           try {

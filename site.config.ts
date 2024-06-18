@@ -100,7 +100,6 @@ export default siteConfig({
     '354fce63bb4c487587c27fdb62d2fa10',
     '0a65771aa4be4611bbed81583b42bd5a',
     '7b8d27527a9c47259881e1836bc0fcf4',
-    '9150bda87c604f04a12afb62c0c4ffdf',
-    '3b149e3ed2604b799a1f850c56e5bafd'
+    '9150bda87c604f04a12afb62c0c4ffdf'
   ]
 })

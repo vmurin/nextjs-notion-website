@@ -3,7 +3,7 @@ import pMemoize from 'p-memoize'
 
 import * as config from './config'
 import * as types from './types'
-import { includeNotionIdInUrls } from './config'
+import { includeNotionIdInUrls, siteMapExcludeIds } from './config'
 import { getCanonicalPageId } from './get-canonical-page-id'
 import { notion } from './notion-api'
 
@@ -42,6 +42,10 @@ async function getAllPagesImpl(
 
   const canonicalPageMap = Object.keys(pageMap).reduce(
     (map, pageId: string) => {
+      if (siteMapExcludeIds.includes(uuidToId(pageId))) {
+        return map;
+      }
+
       const recordMap = pageMap[pageId]
       if (!recordMap) {
         throw new Error(`Error loading page "${pageId}"`)

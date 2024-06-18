@@ -33,6 +33,7 @@ export interface SiteConfig {
   navigationStyle?: types.NavigationStyle
   headerNavigationLinks?: Array<NavigationLink>
   footerNavigationLinks?: Array<NavigationLink>
+  siteMapExcludeIds?: Array<string>
 }
 
 export interface NavigationLink {

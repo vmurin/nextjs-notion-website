@@ -103,6 +103,8 @@ export const footerNavigationLinks: Array<NavigationLink | null> = getSiteConfig
   null
 )
 
+export const siteMapExcludeIds: Array<string> = getSiteConfig('siteMapExcludeIds', [])
+
 // Optional site search
 export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
 

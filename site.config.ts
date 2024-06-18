@@ -88,5 +88,19 @@ export default siteConfig({
       title: 'Datenschutzerklärung',
       pageId: 'a012744c7b67412fb69b523432f44353',
     }
+  ],
+
+  siteMapExcludeIds: [
+    '2c4ca23875934e118f4c388a1a66b58e',
+    '8132370377b84e6da8588d2371045e82',
+    '42f1867849b3404d92d066fb39649925',
+    'b0d5d875ecd64d069ff16cc946fee330',
+    '19c3d5ce8cff4e95903dde84338cc6b6',
+    '9760c7c641f14e5681f1c29d6d55346a',
+    '354fce63bb4c487587c27fdb62d2fa10',
+    '0a65771aa4be4611bbed81583b42bd5a',
+    '7b8d27527a9c47259881e1836bc0fcf4',
+    '9150bda87c604f04a12afb62c0c4ffdf',
+    '3b149e3ed2604b799a1f850c56e5bafd'
   ]
 })

@@ -29,6 +29,7 @@ const ToggleThemeButton = () => {
     <div
       className={cs('breadcrumb', 'button', !hasMounted && styles.hidden)}
       onClick={onToggleTheme}
+      title='Dark / Light Mode'
     >
       {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
     </div>
@@ -53,7 +54,7 @@ export const NotionPageHeader: React.FC<{ block: types.CollectionViewPageBlock |
         <NavigationLinks navigationLinks={headerNavigationLinks}
             classNames={`navbar-links breadcrumbs ${isMenuOpen ? 'open' : ''}`}>
             <ToggleThemeButton />
-            {isSearchEnabled && <Search block={block} title={null} />}
+            {isSearchEnabled && <Search block={block} title={'Search on the whole site'} />}
         </NavigationLinks>
         <div className={`burger-menu ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu} >
           <span className="bar"/>

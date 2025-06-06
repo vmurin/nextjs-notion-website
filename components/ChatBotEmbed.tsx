@@ -9,16 +9,19 @@ const ChatBotEmbed = () => {
                 var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
                 v.onload = function() {
                     window.voiceflow.chat.load({
-                    verify: { projectID: '668172cc0adaae89c376f2f1' },
-                    url: 'https://general-runtime.voiceflow.com',
-                    versionID: 'production'
+                      verify: { projectID: '668172cc0adaae89c376f2f1' },
+                      url: 'https://general-runtime.voiceflow.com',
+                      versionID: 'production',
+                      assistant: {
+                        persistence: 'sessionStorage'
+                      }
                     });
                 }
-                v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+                v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
                 })(document, 'script');
         `
       }}
-      />  
+      />
     )
 }
 export default ChatBotEmbed;

@@ -15,7 +15,7 @@ import { mapImageUrl } from '@/lib/map-image-url'
 import { notion } from '@/lib/notion-api'
 import { NotionPageInfo } from '@/lib/types'
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const pageInfo = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
     return res.status(405).send({ error: 'method not allowed' })
   }
@@ -119,6 +119,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json(pageInfo)
 }
 
+export default pageInfo;
+
 async function isUrlReachable(url: string | null): Promise<boolean> {
   if (!url) {
     return false
@@ -128,6 +130,7 @@ async function isUrlReachable(url: string | null): Promise<boolean> {
     await got.head(url)
     return true
   } catch (err) {
+    console.error('notion-page-info.tsx >>', err)
     return false
   }
 }

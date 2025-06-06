@@ -13,7 +13,7 @@ import CookieConsent from './CookieConsent'
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
-export const FooterImpl: React.FC = () => {
+export function FooterImpl() {
   const currentYear = new Date().getFullYear()
 
   return (

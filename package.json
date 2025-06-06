@@ -7,7 +7,7 @@
   "repository": "vmurin/nextjs-notion-starter-kit",
   "license": "MIT",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "type": "module",
   "scripts": {

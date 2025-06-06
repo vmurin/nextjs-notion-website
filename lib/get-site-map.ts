@@ -10,6 +10,7 @@ import { notion } from './notion-api'
 const uuid = !!includeNotionIdInUrls
 
 export async function getSiteMap(): Promise<types.SiteMap> {
+  console.error('debug:::::', config.rootNotionSpaceId)
   const partialSiteMap = await getAllPages(
     config.rootNotionPageId,
     config.rootNotionSpaceId

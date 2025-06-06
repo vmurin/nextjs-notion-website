@@ -1,7 +1,5 @@
 import {
   type ExtendedRecordMap,
-  type SearchParams,
-  type SearchResults
 } from 'notion-types'
 import { mergeRecordMaps } from 'notion-utils'
 import pMap from 'p-map'
@@ -14,8 +12,16 @@ import {
 } from './config'
 import { getTweetsMap } from './get-tweets'
 import { notion } from './notion-api'
+import { NotionAPI } from '@texonom/nclient' // fixed client for search
+import {
+  type SearchParams,
+  type SearchResults
+} from '@texonom/ntypes'
+
+
 import { getPreviewImageMap } from './preview-images'
 
+const searchAPI = new NotionAPI()
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
     const navigationLinkPageIds = (headerNavigationLinks || [])
@@ -71,5 +77,5 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
 }
 
 export async function search(params: SearchParams): Promise<SearchResults> {
-  return notion.search(params)
+  return searchAPI.search(params)
 }

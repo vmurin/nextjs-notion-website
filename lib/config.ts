@@ -31,7 +31,7 @@ if (!rootNotionPageId) {
 export const rootNotionSpaceId: string | null = parsePageId(
   getSiteConfig('rootNotionSpaceId', null),
   { uuid: true }
-)
+) || null // parsePageId returns not serializable undefined - therefore 'null' as default
 
 export const pageUrlOverrides = cleanPageUrlMap(
   getSiteConfig('pageUrlOverrides', {}) || {},

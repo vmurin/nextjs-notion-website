@@ -31,6 +31,7 @@ export function Page404({ site, pageId, error }: types.PageProps) {
           <Image
             src='/404.png'
             alt='404 Not Found'
+            fill
             className={styles.errorImage}
           />
         </main>

@@ -8,6 +8,7 @@ type Props = {
   navigationLinks: Array<NavigationLink | null>,
   classNames?: string
 }
+
 export const NavigationLinks: React.FC<Props> = ( {navigationLinks, classNames, children}) => {
   const { components, mapPageUrl } = useNotionContext()
 

@@ -5,7 +5,7 @@ import { hasCookie, setCookie } from "cookies-next";
 import * as config from '@/lib/config'
 import styles from './styles.module.css'
 import { NavLink } from './NavLink';
-import { cs } from 'react-notion-x';
+import { cs } from 'react-notion-x'
 
 const CookieConsent: React.FC = () => {
   const [showConsent, setShowConsent] = React.useState(true);

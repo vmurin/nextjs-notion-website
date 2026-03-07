@@ -3,12 +3,13 @@ frontend:
     phases:
         preBuild:
             commands:
-                - 'yarn install --frozen-lockfile'
+                - corepack enable pnpm
+                - pnpm install --frozen-lockfile
         build:
             commands:
                 - env | grep -e REDIS_ >> .env.production
                 - env | grep -e NEXT_PUBLIC_ >> .env.production
-                - 'yarn build'
+                - pnpm build
     artifacts:
         baseDirectory: .next
         files:

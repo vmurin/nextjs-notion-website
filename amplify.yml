@@ -9,6 +9,7 @@ frontend:
             commands:
                 - env | grep -e REDIS_ >> .env.production
                 - env | grep -e NEXT_PUBLIC_ >> .env.production
+                - env | grep -e NOTION_TOKEN >> .env.production
                 - pnpm build
     artifacts:
         baseDirectory: .next

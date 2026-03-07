@@ -13,7 +13,7 @@ export default siteConfig({
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: null,
+  rootNotionSpaceId: '534259b2-fb82-4b5a-8f8f-c48c7d752644',
 
   // basic site info (required)
   name: 'Vlad Murin - Full-Stack Developer',

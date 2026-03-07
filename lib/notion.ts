@@ -10,7 +10,8 @@ import pMemoize from 'p-memoize'
 import {
   isPreviewImageSupportEnabled,
   headerNavigationLinks,
-  navigationStyle
+  navigationStyle,
+  rootNotionSpaceId
 } from './config'
 import { getTweetsMap } from './get-tweets'
 import { notion } from './notion-api'
@@ -23,7 +24,10 @@ import {
 
 import { getPreviewImageMap } from './preview-images'
 
-const searchAPI = new NotionAPI()
+// Auth token required for search to return actual results
+const searchAPI = new NotionAPI({
+  authToken: process.env.NOTION_TOKEN
+})
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
     const navigationLinkPageIds = (headerNavigationLinks || [])
@@ -80,17 +84,19 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
 
 export async function search(params: SearchParams): Promise<SearchResults> {
   // Transform notion-types SearchParams to @texonom/ntypes SearchParams
-  // notion-types uses 'ancestorId', @texonom/ntypes uses 'spaceId'
+  // notion-types uses 'ancestorId' (page ID), @texonom/ntypes uses 'spaceId' (workspace ID)
+  // rootNotionSpaceId is the actual Notion workspace ID needed for search
   const texonomParams: TexonomSearchParams = {
-    spaceId: params.ancestorId,
+    spaceId: rootNotionSpaceId!,
     query: params.query,
     limit: params.limit,
-    filters: params.filters ? {
-      isDeletedOnly: params.filters.isDeletedOnly,
-      excludeTemplates: params.filters.excludeTemplates,
-      navigableBlockContentOnly: params.filters.isNavigableOnly,
-      requireEditPermissions: params.filters.requireEditPermissions
-    } : undefined
+    filters: {
+      isDeletedOnly: params.filters?.isDeletedOnly ?? false,
+      excludeTemplates: params.filters?.excludeTemplates ?? true,
+      navigableBlockContentOnly: params.filters?.isNavigableOnly ?? false,
+      requireEditPermissions: params.filters?.requireEditPermissions ?? false,
+      ancestors: params.ancestorId ? [params.ancestorId] : undefined
+    }
   }
 
   const results = await searchAPI.search(texonomParams) as TexonomSearchResults

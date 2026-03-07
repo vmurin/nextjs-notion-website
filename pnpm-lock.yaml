@@ -21,10 +21,10 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0(react@18.3.1)
       '@texonom/nclient':
-        specifier: ^1.4.4
+        specifier: ^1.5.8
         version: 1.5.8
       '@texonom/ntypes':
-        specifier: ^1.4.4
+        specifier: ^1.5.8
         version: 1.5.8
       classnames:
         specifier: ^2.5.1

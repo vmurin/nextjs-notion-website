@@ -1,9 +1,7 @@
 import { type NextApiRequest, type NextApiResponse } from 'next'
+import { type SearchParams } from 'notion-types'
 
 import { search } from '@/lib/notion'
-import {
-  type SearchParams,
-} from '@texonom/ntypes'
 
 export default async function searchNotion(
   req: NextApiRequest,

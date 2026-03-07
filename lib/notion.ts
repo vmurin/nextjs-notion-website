@@ -1,5 +1,7 @@
 import {
   type ExtendedRecordMap,
+  type SearchParams,
+  type SearchResults
 } from 'notion-types'
 import { mergeRecordMaps } from 'notion-utils'
 import pMap from 'p-map'
@@ -14,8 +16,8 @@ import { getTweetsMap } from './get-tweets'
 import { notion } from './notion-api'
 import { NotionAPI } from '@texonom/nclient' // fixed client for search
 import {
-  type SearchParams,
-  type SearchResults
+  type SearchParams as TexonomSearchParams,
+  type SearchResults as TexonomSearchResults
 } from '@texonom/ntypes'
 
 
@@ -77,5 +79,34 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
 }
 
 export async function search(params: SearchParams): Promise<SearchResults> {
-  return searchAPI.search(params)
+  // Transform notion-types SearchParams to @texonom/ntypes SearchParams
+  // notion-types uses 'ancestorId', @texonom/ntypes uses 'spaceId'
+  const texonomParams: TexonomSearchParams = {
+    spaceId: params.ancestorId,
+    query: params.query,
+    limit: params.limit,
+    filters: params.filters ? {
+      isDeletedOnly: params.filters.isDeletedOnly,
+      excludeTemplates: params.filters.excludeTemplates,
+      navigableBlockContentOnly: params.filters.isNavigableOnly,
+      requireEditPermissions: params.filters.requireEditPermissions
+    } : undefined
+  }
+
+  const results = await searchAPI.search(texonomParams) as TexonomSearchResults
+
+  // Transform results back to notion-types format
+  return {
+    recordMap: results.recordMap as any,
+    results: results.results.map(r => ({
+      id: r.id,
+      isNavigable: r.isNavigable,
+      score: r.score,
+      highlight: {
+        pathText: r.highlight?.pathText || '',
+        text: r.highlight?.text || ''
+      }
+    })),
+    total: results.total
+  }
 }

@@ -3,7 +3,7 @@ import { IconContext } from '@react-icons/all-files'
 import ChatBotEmbed from '@/components/ChatBotEmbed'
 
 export default class MyDocument extends Document {
-  render() {
+  override render() {
     return (
       <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
         <Html lang='en'>
@@ -19,10 +19,10 @@ export default class MyDocument extends Document {
             <link rel='manifest' href='/manifest.json' />
           </Head>
 
-          <body>
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
+        <body>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
 /** Inlined version of noflash.js from use-dark-mode */
 ;(function () {
   var storageKey = 'darkMode'
@@ -58,14 +58,14 @@ export default class MyDocument extends Document {
   }
 })();
 `
-              }}
-            />
-            <Main />
-            <NextScript />
-            <ChatBotEmbed />
-          </body>
-        </Html>
-      </IconContext.Provider>
+            }}
+          />
+          <Main />
+          <NextScript />
+          <ChatBotEmbed />
+        </body>
+      </Html>
+    </IconContext.Provider>
     )
   }
 }

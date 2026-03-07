@@ -1,17 +1,13 @@
 import * as React from 'react'
 
-import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
-import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 
 import * as config from '@/lib/config'
 import styles from './styles.module.css'
 import { NavigationLinks } from './NavigationLinks'
 import CookieConsent from './CookieConsent'
-
-// TODO: merge the data and icons from PageSocial with the social links in Footer
 
 export function FooterImpl() {
   const currentYear = new Date().getFullYear()
@@ -28,8 +24,8 @@ export function FooterImpl() {
         {config.twitter && (
           <a
             className={styles.twitter}
-            href={`https://twitter.com/${config.twitter}`}
-            title={`Twitter @${config.twitter}`}
+            href={`https://x.com/${config.twitter}`}
+            title={`X @${config.twitter}`}
             target='_blank'
             rel='noopener noreferrer'
           >
@@ -58,30 +54,6 @@ export function FooterImpl() {
             rel='noopener noreferrer'
           >
             <FaLinkedin />
-          </a>
-        )}
-
-        {config.newsletter && (
-          <a
-            className={styles.newsletter}
-            href={`${config.newsletter}`}
-            title={`Newsletter ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaEnvelopeOpenText />
-          </a>
-        )}
-
-        {config.youtube && (
-          <a
-            className={styles.youtube}
-            href={`https://www.youtube.com/${config.youtube}`}
-            title={`YouTube ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaYoutube />
           </a>
         )}
       </div>

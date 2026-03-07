@@ -3,11 +3,7 @@ import bundleAnalyzer from '@next/bundle-analyzer'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true'
-})
-
-export default withBundleAnalyzer({
+export default {
   staticPageGenerationTimeout: 300,
   images: {
     remotePatterns: [
@@ -74,4 +70,4 @@ export default withBundleAnalyzer({
 
   // See https://react-tweet.vercel.app/next#troubleshooting
   transpilePackages: ['react-tweet']
-})
+}

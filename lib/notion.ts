@@ -25,7 +25,7 @@ const searchAPI = new NotionAPI()
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
     const navigationLinkPageIds = (headerNavigationLinks || [])
-      .map((link) => link.pageId)
+      .map((link) => link?.pageId)
       .filter(Boolean)
 
     if (navigationStyle !== 'default' && navigationLinkPageIds.length) {

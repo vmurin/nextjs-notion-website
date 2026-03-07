@@ -1,17 +1,17 @@
 import { type ExtendedRecordMap } from 'notion-types'
 import { parsePageId } from 'notion-utils'
 
+import type { PageProps } from './types'
 import * as acl from './acl'
 import { environment, pageUrlAdditions, pageUrlOverrides, site } from './config'
 import { db } from './db'
 import { getSiteMap } from './get-site-map'
 import { getPage } from './notion'
 
-
 async function getPageWithTry(pageId: string) {
   try {
     return await getPage(pageId)
-  } catch (error) {
+  } catch (error: any) {
     if (error.message && (error.message as string).indexOf('Notion page not found') > -1) {
       error['statusCode'] = 404
     }
@@ -19,12 +19,15 @@ async function getPageWithTry(pageId: string) {
   }
 }
 
-export async function resolveNotionPage(domain: string, rawPageId?: string) {
-  let pageId: string
+export async function resolveNotionPage(
+  domain: string,
+  rawPageId?: string
+): Promise<PageProps> {
+  let pageId: string | undefined
   let recordMap: ExtendedRecordMap
 
   if (rawPageId && rawPageId !== 'index') {
-    pageId = parsePageId(rawPageId)
+    pageId = parsePageId(rawPageId)!
 
     if (!pageId) {
       // check if the site configuration provides an override or a fallback for
@@ -33,7 +36,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
         pageUrlOverrides[rawPageId] || pageUrlAdditions[rawPageId]
 
       if (override) {
-        pageId = parsePageId(override)
+        pageId = parsePageId(override)!
       }
     }
 
@@ -49,7 +52,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
         pageId = await db.get(cacheKey)
 
         // console.log(`redis get "${cacheKey}"`, pageId)
-      } catch (err) {
+      } catch (err: any) {
         // ignore redis errors
         console.warn(`redis error get "${cacheKey}"`, err.message)
       }
@@ -76,7 +79,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
             await db.set(cacheKey, pageId, cacheTTL)
 
             // console.log(`redis set "${cacheKey}"`, pageId, { cacheTTL })
-          } catch (err) {
+          } catch (err: any) {
             // ignore redis errors
             console.warn(`redis error set "${cacheKey}"`, err.message)
           }
@@ -95,6 +98,6 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
     recordMap = await getPage(pageId)
   }
 
-  const props = { site, recordMap, pageId }
+  const props: PageProps = { site, recordMap, pageId }
   return { ...props, ...(await acl.pageAcl(props)) }
 }

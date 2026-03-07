@@ -1,9 +1,9 @@
 import type * as types from 'notion-types'
-import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
-import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import cs from 'classnames'
 import * as React from 'react'
 import { Breadcrumbs, Header, Search } from 'react-notion-x'
+import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
+import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 
 import { isSearchEnabled, headerNavigationLinks, navigationStyle } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
@@ -20,7 +20,6 @@ function ToggleThemeButton() {
   }, [])
 
   const onToggleTheme = React.useCallback(() => {
-    console.log('onToggleTheme')
     toggleDarkMode()
   }, [toggleDarkMode])
 

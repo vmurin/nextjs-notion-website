@@ -2,8 +2,8 @@ import * as types from './types'
 
 export interface SiteConfig {
   rootNotionPageId: string
-  cookiePolicyLink: NavigationLink
-  rootNotionSpaceId?: string
+  cookiePolicyLink?: NavigationLink
+  rootNotionSpaceId?: string | null
 
   name: string
   domain: string
@@ -27,8 +27,8 @@ export interface SiteConfig {
   isSearchEnabled?: boolean
 
   includeNotionIdInUrls?: boolean
-  pageUrlOverrides?: types.PageUrlOverridesMap
-  pageUrlAdditions?: types.PageUrlOverridesMap
+  pageUrlOverrides?: types.PageUrlOverridesMap | null
+  pageUrlAdditions?: types.PageUrlOverridesMap | null
 
   navigationStyle?: types.NavigationStyle
   headerNavigationLinks?: Array<NavigationLink>

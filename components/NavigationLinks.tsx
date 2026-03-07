@@ -16,7 +16,7 @@ export const NavigationLinks: React.FC<Props> = ( {navigationLinks, classNames, 
         <div className={classNames}>
           {navigationLinks
             ?.map((link, index) => {
-              if (!link.pageId && !link.url) {
+              if (!link || (!link.pageId && !link.url)) {
                 return null
               }
 

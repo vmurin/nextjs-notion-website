@@ -1,9 +1,12 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 import bundleAnalyzer from '@next/bundle-analyzer'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-export default {
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true'
+})
+
+export default withBundleAnalyzer({
   staticPageGenerationTimeout: 300,
   images: {
     remotePatterns: [
@@ -70,4 +73,4 @@ export default {
 
   // See https://react-tweet.vercel.app/next#troubleshooting
   transpilePackages: ['react-tweet']
-}
+})

@@ -28,7 +28,7 @@ const pageInfo = async (req: NextApiRequest, res: NextApiResponse) => {
   const recordMap = await notion.getPage(pageId)
 
   const keys = Object.keys(recordMap?.block || {})
-  const block = recordMap?.block?.[keys[0]]?.value
+  const block = recordMap?.block?.[keys[0]]?.value as PageBlock
 
   if (!block) {
     throw new Error('Invalid recordMap for page')

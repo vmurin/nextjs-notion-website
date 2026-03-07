@@ -10,7 +10,7 @@ if (isRedisEnabled) {
   db = new Keyv({ store: keyvRedis, namespace: redisNamespace || undefined })
   db.on('error', err => {
     console.log('Connection Error. Switching Redis off.', err)
-    db.disconnect();
+    ;(db as any).disconnect?.();
     db = new Keyv()
   });
 } else {

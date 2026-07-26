@@ -23,6 +23,7 @@ import { PostHogProvider } from 'posthog-js/react'
 import {
   posthogKey
 } from '@/lib/config'
+import ChatBotEmbed from '@/components/ChatBotEmbed'
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (posthogKey && typeof window !== 'undefined') {
@@ -52,6 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <PostHogProvider client={posthog}>
       <Component {...pageProps} />
+      <ChatBotEmbed />
     </PostHogProvider>
   )
 }

@@ -1,27 +1,31 @@
-import React from 'react'
+import * as React from 'react'
 
-const ChatBotEmbed = () => {
-    return (
-      <script
-      dangerouslySetInnerHTML={{
-        __html: `
-            (function(d, t) {
-                var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-                v.onload = function() {
-                    window.voiceflow.chat.load({
-                      verify: { projectID: '668172cc0adaae89c376f2f1' },
-                      url: 'https://general-runtime.voiceflow.com',
-                      versionID: 'production',
-                      assistant: {
-                        persistence: 'sessionStorage'
-                      }
-                    });
-                }
-                v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-                })(document, 'script');
-        `
-      }}
-      />
-    )
+const BUNDLE = 'https://d1gl9sutig2omm.cloudfront.net/widget/v2/bundle.mjs'
+const API_URL = 'https://732ym936tl.execute-api.eu-central-1.amazonaws.com'
+
+export default function ChatBotEmbed() {
+  React.useEffect(() => {
+    let handle: { destroy: () => void } | undefined
+    let cancelled = false
+
+    import(/* webpackIgnore: true */ /* turbopackIgnore: true */ BUNDLE)
+      .then(({ load }) =>
+        load({
+          api: API_URL,
+          bot: 'vlad-murin'
+        })
+      )
+      .then((h) => {
+        if (cancelled) h.destroy()
+        else handle = h
+      })
+      .catch((e) => console.error('[chat-widget]', e))
+
+    return () => {
+      cancelled = true
+      handle?.destroy()
+    }
+  }, [])
+
+  return null
 }
-export default ChatBotEmbed;

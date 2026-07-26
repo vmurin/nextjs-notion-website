@@ -33,12 +33,8 @@ const getAllPages = pMemoize(getAllPagesImpl, {
 
 const getPage = async (pageId: string, opts?: any) => {
   console.log('\nnotion getPage', uuidToId(pageId))
-  return notion.getPage(pageId, {
-    kyOptions: {
-      timeout: 30_000
-    },
-    ...opts
-  })
+  // timeout, retries and backoff are configured once on the client itself
+  return notion.getPage(pageId, opts)
 }
 
 async function getAllPagesImpl(

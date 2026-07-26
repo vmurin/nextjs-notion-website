@@ -7,8 +7,8 @@ export default siteConfig({
   //privacy policy
   cookiePolicyLink: {
     title: 'Cookie-Richtlinie',
-    pageId:'a012744c7b67412fb69b523432f44353',
-    hash:'089ee90eb43b4c0cbdde6975fd265e14'
+    pageId: 'a012744c7b67412fb69b523432f44353',
+    hash: '089ee90eb43b4c0cbdde6975fd265e14'
   },
 
   // if you want to restrict pages to a single notion workspace (optional)
@@ -50,9 +50,9 @@ export default siteConfig({
   // pageUrlOverrides: null,
   //
   pageUrlOverrides: {
-    '/about':   '130da9f6e9024380a008830fa0b2746f',
+    '/about': '130da9f6e9024380a008830fa0b2746f',
     '/imprint': '4f3c19c016a24760b05225a7132be196',
-    '/privacy': 'a012744c7b67412fb69b523432f44353',
+    '/privacy': 'a012744c7b67412fb69b523432f44353'
   },
 
   // whether to use the default notion navigation style or a custom one with links to
@@ -86,7 +86,7 @@ export default siteConfig({
     },
     {
       title: 'Datenschutzerklärung',
-      pageId: 'a012744c7b67412fb69b523432f44353',
+      pageId: 'a012744c7b67412fb69b523432f44353'
     }
   ],
 

@@ -20,15 +20,13 @@ import '@/styles/components.scss'
 import '@/styles/prism-theme.css'
 import posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
-import {
-  posthogKey
-} from '@/lib/config'
+import { posthogKey } from '@/lib/config'
 import ChatBotEmbed from '@/components/ChatBotEmbed'
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (posthogKey && typeof window !== 'undefined') {
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
-    api_host: "/ingest",  //reverse proxy
+    api_host: '/ingest', //reverse proxy
     ui_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com',
     // Enable debug mode in development
     loaded: (posthog) => {

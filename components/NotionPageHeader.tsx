@@ -5,7 +5,11 @@ import { Breadcrumbs, Header, Search } from 'react-notion-x'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 
-import { isSearchEnabled, headerNavigationLinks, navigationStyle } from '@/lib/config'
+import {
+  isSearchEnabled,
+  headerNavigationLinks,
+  navigationStyle
+} from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
@@ -39,10 +43,10 @@ export function NotionPageHeader({
 }: {
   block: types.CollectionViewPageBlock | types.PageBlock
 }) {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen)
   }
 
   if (navigationStyle === 'default') {
@@ -53,15 +57,22 @@ export function NotionPageHeader({
     <header className='notion-header'>
       <div className='notion-nav-header'>
         <Breadcrumbs block={block} rootOnly={true} />
-        <NavigationLinks navigationLinks={headerNavigationLinks}
-            classNames={`navbar-links breadcrumbs ${isMenuOpen ? 'open' : ''}`}>
-            <ToggleThemeButton />
-            {isSearchEnabled && <Search block={block} title={'Search on the whole site'} />}
+        <NavigationLinks
+          navigationLinks={headerNavigationLinks}
+          classNames={`navbar-links breadcrumbs ${isMenuOpen ? 'open' : ''}`}
+        >
+          <ToggleThemeButton />
+          {isSearchEnabled && (
+            <Search block={block} title={'Search on the whole site'} />
+          )}
         </NavigationLinks>
-        <div className={`burger-menu ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu} >
-          <span className="bar"/>
-          <span className="bar"/>
-          <span className="bar"/>
+        <div
+          className={`burger-menu ${isMenuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+        >
+          <span className='bar' />
+          <span className='bar' />
+          <span className='bar' />
         </div>
       </div>
     </header>

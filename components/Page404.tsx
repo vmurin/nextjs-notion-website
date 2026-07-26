@@ -27,7 +27,7 @@ export function Page404({ site, pageId, error }: types.PageProps) {
             )
           )}
 
-          <Link href="/">Return Home</Link>
+          <Link href='/'>Return Home</Link>
           <Image
             src='/404.png'
             alt='404 Not Found'

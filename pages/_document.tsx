@@ -18,10 +18,10 @@ export default class MyDocument extends Document {
             <link rel='manifest' href='/manifest.json' />
           </Head>
 
-        <body>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+          <body>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
 /** Inlined version of noflash.js from use-dark-mode */
 ;(function () {
   var storageKey = 'darkMode'
@@ -57,13 +57,13 @@ export default class MyDocument extends Document {
   }
 })();
 `
-            }}
-          />
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    </IconContext.Provider>
+              }}
+            />
+            <Main />
+            <NextScript />
+          </body>
+        </Html>
+      </IconContext.Provider>
     )
   }
 }

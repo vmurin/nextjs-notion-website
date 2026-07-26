@@ -183,7 +183,7 @@ export function NotionPage({
     []
   )
 
-  console.log('Build ID:', process.env.NEXT_PUBLIC_BUILD_ID);
+  console.log('Build ID:', process.env.NEXT_PUBLIC_BUILD_ID)
 
   // lite mode is for oembed
   const isLiteMode = lite === 'true'

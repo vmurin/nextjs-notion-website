@@ -119,7 +119,7 @@ const pageInfo = async (req: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json(pageInfo)
 }
 
-export default pageInfo;
+export default pageInfo
 
 async function isUrlReachable(url: string | null): Promise<boolean> {
   if (!url) {

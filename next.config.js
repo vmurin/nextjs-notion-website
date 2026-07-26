@@ -13,32 +13,32 @@ export default withBundleAnalyzer({
       {
         protocol: 'https',
         hostname: '**.notion.so',
-        port: '',
+        port: ''
       },
       {
         protocol: 'https',
         hostname: 'murin-online.de',
-        port: '',
+        port: ''
       },
       { protocol: 'https', hostname: 'www.notion.so' },
       { protocol: 'https', hostname: 'notion.so' }
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
   },
   async rewrites() {
     // reverse proxy for posthog to overcome tracking blocker
     return [
       {
-        source: "/ingest/static/:path*",
-        destination: "https://eu-assets.i.posthog.com/static/:path*",
+        source: '/ingest/static/:path*',
+        destination: 'https://eu-assets.i.posthog.com/static/:path*'
       },
       {
-        source: "/ingest/:path*",
-        destination: "https://eu.i.posthog.com/:path*",
-      },
-    ];
+        source: '/ingest/:path*',
+        destination: 'https://eu.i.posthog.com/:path*'
+      }
+    ]
   },
   // This is required to support PostHog trailing slash API requests
   skipTrailingSlashRedirect: true,
@@ -46,14 +46,14 @@ export default withBundleAnalyzer({
   webpack: (config) => {
     // camelCase style names from css modules
     config.module.rules
-        .find(({oneOf}) => !!oneOf).oneOf
-        .filter(({use}) => JSON.stringify(use)?.includes('css-loader'))
-        .reduce((acc, {use}) => acc.concat(use), [])
-        .forEach(({options}) => {
-            if (options.modules) {
-                options.modules.exportLocalsConvention = 'camelCase';
-            }
-        });
+      .find(({ oneOf }) => !!oneOf)
+      .oneOf.filter(({ use }) => JSON.stringify(use)?.includes('css-loader'))
+      .reduce((acc, { use }) => acc.concat(use), [])
+      .forEach(({ options }) => {
+        if (options.modules) {
+          options.modules.exportLocalsConvention = 'camelCase'
+        }
+      })
 
     // Workaround for ensuring that `react` and `react-dom` resolve correctly
     // when using a locally-linked version of `react-notion-x`.
@@ -65,12 +65,13 @@ export default withBundleAnalyzer({
       'node_modules/react-dom'
     )
 
-    return config;
+    return config
   },
   env: {
-    NEXT_PUBLIC_BUILD_ID: process.env.AWS_BRANCH && process.env.AWS_COMMIT_ID
-      ? `${process.env.AWS_BRANCH}-${process.env.AWS_COMMIT_ID}`
-      : 'local-dev',
+    NEXT_PUBLIC_BUILD_ID:
+      process.env.AWS_BRANCH && process.env.AWS_COMMIT_ID
+        ? `${process.env.AWS_BRANCH}-${process.env.AWS_COMMIT_ID}`
+        : 'local-dev'
   },
 
   // See https://react-tweet.vercel.app/next#troubleshooting

@@ -21,7 +21,6 @@ import {
   type SearchResults as TexonomSearchResults
 } from '@texonom/ntypes'
 
-
 import { getPreviewImageMap } from './preview-images'
 
 // Auth token required for search to return actual results
@@ -99,12 +98,14 @@ export async function search(params: SearchParams): Promise<SearchResults> {
     }
   }
 
-  const results = await searchAPI.search(texonomParams) as TexonomSearchResults
+  const results = (await searchAPI.search(
+    texonomParams
+  )) as TexonomSearchResults
 
   // Transform results back to notion-types format
   return {
     recordMap: results.recordMap as any,
-    results: results.results.map(r => ({
+    results: results.results.map((r) => ({
       id: r.id,
       isNavigable: r.isNavigable,
       score: r.score,

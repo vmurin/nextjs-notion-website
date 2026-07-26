@@ -1,10 +1,7 @@
 import ExpiryMap from 'expiry-map'
 import pMemoize from 'p-memoize'
 
-import {
-  type SearchParams,
-  type SearchResults
-} from 'notion-types'
+import { type SearchParams, type SearchResults } from 'notion-types'
 import { api } from './config'
 
 export const searchNotion = pMemoize(searchNotionImpl, {
@@ -12,9 +9,7 @@ export const searchNotion = pMemoize(searchNotionImpl, {
   cache: new ExpiryMap(10_000)
 })
 
-async function searchNotionImpl(
-  params: SearchParams
-): Promise<SearchResults> {
+async function searchNotionImpl(params: SearchParams): Promise<SearchResults> {
   return fetch(api.searchNotion, {
     method: 'POST',
     body: JSON.stringify(params),

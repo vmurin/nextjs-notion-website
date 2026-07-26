@@ -24,8 +24,8 @@ export const rootNotionPageId: string = parsePageId(
   { uuid: false }
 )!
 
-export const cookiePolicyLink: NavigationLink = getSiteConfig('cookiePolicyLink')
-
+export const cookiePolicyLink: NavigationLink =
+  getSiteConfig('cookiePolicyLink')
 
 if (!rootNotionPageId) {
   throw new Error('Config error invalid "rootNotionPageId"')
@@ -104,17 +104,16 @@ export const navigationStyle: NavigationStyle = getSiteConfig(
   'default'
 )
 
-export const headerNavigationLinks: Array<NavigationLink | null> = getSiteConfig(
-  'headerNavigationLinks',
-  null
-)
+export const headerNavigationLinks: Array<NavigationLink | null> =
+  getSiteConfig('headerNavigationLinks', null)
 
-export const footerNavigationLinks: Array<NavigationLink | null> = getSiteConfig(
-  'footerNavigationLinks',
-  null
-)
+export const footerNavigationLinks: Array<NavigationLink | null> =
+  getSiteConfig('footerNavigationLinks', null)
 
-export const siteMapExcludeIds: Array<string> = getSiteConfig('siteMapExcludeIds', [])
+export const siteMapExcludeIds: Array<string> = getSiteConfig(
+  'siteMapExcludeIds',
+  []
+)
 
 // Optional site search
 export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)

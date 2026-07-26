@@ -12,7 +12,10 @@ async function getPageWithTry(pageId: string) {
   try {
     return await getPage(pageId)
   } catch (error: any) {
-    if (error.message && (error.message as string).indexOf('Notion page not found') > -1) {
+    if (
+      error.message &&
+      (error.message as string).indexOf('Notion page not found') > -1
+    ) {
       error['statusCode'] = 404
     }
     throw error
@@ -86,7 +89,7 @@ export async function resolveNotionPage(
         }
       } else {
         // note: we're purposefully not caching URI to pageId mappings for 404s
-        const error =  new Error(`Not found "${rawPageId}"`)
+        const error = new Error(`Not found "${rawPageId}"`)
         error['statusCode'] = 404
         throw error
       }

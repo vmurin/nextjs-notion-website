@@ -62,7 +62,7 @@ async function getAllPagesImpl(
   const canonicalPageMap = Object.keys(pageMap).reduce(
     (map: Record<string, string>, pageId: string) => {
       if (siteMapExcludeIds.includes(uuidToId(pageId))) {
-        return map;
+        return map
       }
 
       const recordMap = pageMap[pageId]

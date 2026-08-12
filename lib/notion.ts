@@ -14,7 +14,7 @@ import {
   rootNotionSpaceId
 } from './config'
 import { getTweetsMap } from './get-tweets'
-import { notion } from './notion-api'
+import { notion, USER_AGENT } from './notion-api'
 import { NotionAPI } from '@texonom/nclient' // fixed client for search
 import {
   type SearchParams as TexonomSearchParams,
@@ -98,9 +98,11 @@ export async function search(params: SearchParams): Promise<SearchResults> {
     }
   }
 
-  const results = (await searchAPI.search(
-    texonomParams
-  )) as TexonomSearchResults
+  // Same browser User-Agent as the main client — Notion 403s `User-Agent: node`.
+  // This client has no constructor-level header option, so it goes per call.
+  const results = (await searchAPI.search(texonomParams, {
+    headers: { 'User-Agent': USER_AGENT }
+  })) as TexonomSearchResults
 
   // Transform results back to notion-types format
   return {
